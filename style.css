@@ -1,0 +1,1376 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+  background-color: #eaeaea; 
+  font-family: 'Gowun Batang', serif; 
+  -webkit-font-smoothing: antialiased;
+}
+
+.mobile-container {
+  max-width: 420px;       
+  width: 100%;            
+  min-height: 100vh;      
+  margin: 0 auto;         
+  background-color: #fbfaf7; 
+  position: relative;
+  overflow-x: hidden;     
+}
+
+/* ========================================================
+   [SECTION] INTRO AREA 
+   ======================================================== */
+#intro {
+  width: 100%;
+  height: 100svh;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('image/intro/cover.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.letter-contents {
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  width: 98%;
+  text-align: center;
+  z-index: 2;
+}
+
+.fade-in-image {
+    width: 100%; /* 필요에 따라 조절하세요 */
+    opacity: 0;
+    animation: fadeInSlideUp 2s ease-out forwards;
+    animation-delay: 0.5s; /* 페이지 로드 후 0.5초 뒤 시작 */
+}
+
+/* 애니메이션 키프레임 */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* 아래에서 20px 위로 */
+    }
+    to {
+        opacity: .8;
+        transform: translateY(0);    /* 제자리로 */
+    }
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 999;
+  
+  /* 0.5초 대기 후 1초 동안 실행 */
+  animation: fadeInScroll 1s ease forwards;
+  animation-delay: 0.5s; 
+  opacity: 0; /* 처음엔 투명하게 시작 */
+}
+
+/* 텍스트와 화살표가 배경에 묻히지 않도록 그림자 추가 */
+.scroll-down span, 
+.scroll-down .arrow {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.scroll-down span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.scroll-down .arrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  animation: floatArrow 1.6s ease-in-out infinite;
+}
+
+@keyframes fadeInScroll {
+  from { 
+      opacity: 0; 
+      transform: translate(-50%, 10px); /* 원래 위치보다 10px 아래에서 시작 */
+  }
+  to { 
+      opacity: 1; 
+      transform: translate(-50%, 0);    /* 제자리로 */
+  }
+}
+/* ========================================================
+   [SECTION] INFO AREA
+   ======================================================== */
+#info {
+  width: 100%;
+  padding: 70px 0 0 0; 
+  background-color: #fbfaf7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* 초대 문구 영역 */
+.invitation-section {
+    width: 100%;
+    padding-bottom:70px;
+    background: #fbfaf7;
+    text-align: center;
+}
+
+/* 하트 장식 */
+.invitation-heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+/* 초대 문구 */
+.invitation-content h2 {
+    margin: 0 0 40px;
+    color: #b63334;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+.invitation-content h2 span{
+	color:#000;
+}
+/* 본문 */
+.invitation-message {
+    color: #625d58;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.85;
+    letter-spacing: -0.5px;
+    word-break: keep-all;
+}
+
+.invitation-message p {
+    margin: 0;
+}
+
+.invitation-message p + p {
+    margin-top: 26px;
+}
+
+
+.family-relation-box {
+  width: auto;                  
+  min-width: 280px;             
+  border-top: 1px solid #EAE5DC; 
+  border-bottom: 1px solid #EAE5DC;
+  padding: 30px 15px;
+  margin-bottom: 70px;
+  text-align: left;             
+  display: flex;
+  flex-direction: column;
+  align-items: center;          
+}
+
+.family-relation-box .row {
+  margin: 14px 0;
+  font-size: 14px;
+  color: #666666;
+  width: 100%;                  
+  display: flex;                
+  justify-content: flex-start;  
+  align-items: baseline;        
+}
+
+.family-relation-box .parents {
+  font-weight: 400;
+  color: #444444;
+  display: inline-block;
+  min-width: 115px;             
+}
+
+.family-relation-box .relation {
+  font-size: 12px;
+  color: #888888;
+  display: inline-block;
+  min-width: 45px;              
+  margin-right: 15px;           
+}
+
+.family-relation-box .name {
+  font-size: 16px;
+  font-weight: 400;
+  color: #222222;
+  letter-spacing: 2px;
+}
+/* =====================================
+   MARRIED MOTION SECTION
+===================================== */
+
+
+/* =====================================
+   MARRIED MOTION SECTION
+===================================== */
+
+.married-motion-section {
+    width: 100%;
+    padding: 15px 0 0;
+    background: #fbfaf7;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.married-motion-stage {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    aspect-ratio: 362 / 254;
+    overflow: visible;
+    box-sizing: border-box;
+}
+
+/* 모든 PNG 공통 */
+.married-motion-stage .motion-item {
+    position: absolute;
+    display: block;
+    width: auto;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* 애니메이션 시작 전 완전히 숨김 */
+.married-motion-stage:not(.is-visible) .motion-item {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+}
+
+/* =====================================
+   이미지 위치
+===================================== */
+
+/* WE'RE */
+.motion-were {
+    left: 11%;
+    top: 11%;
+}
+
+/* GETTING */
+.motion-getting {
+    left: 34%;
+    top: 9%;
+}
+
+/* MARRIED */
+.motion-married {
+    right: 8%;
+    top: 10%;
+}
+
+/* 하트 */
+.motion-heart {
+    right: 8%;
+    top: -10px;
+    transform-origin: center;
+}
+
+/* 인물 - 반응형 가운데 정렬 */
+.motion-couple {
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transform-origin: center bottom;
+}
+
+/* =====================================
+   순차 등장
+===================================== */
+
+/* WE'RE */
+.married-motion-stage.is-visible .motion-were {
+    animation: stepUpLeft 1s steps(1, end) 0.1s both;
+}
+
+/* GETTING */
+.married-motion-stage.is-visible .motion-getting {
+    animation: stepUpRight 1s steps(1, end) 0.45s both;
+}
+
+/* MARRIED */
+.married-motion-stage.is-visible .motion-married {
+    animation: stepUpLeft 1s steps(1, end) 0.8s both;
+}
+/* HEART */
+.married-motion-stage.is-visible .motion-heart {
+    animation:
+        heartAppearTogether 1s steps(1, end) 0.8s both,
+        heartWiggle 1.5s ease-in-out 1.8s infinite;
+}
+
+/* COUPLE */
+.married-motion-stage.is-visible .motion-couple {
+    animation: coupleStepUp 1s steps(1, end) 1.5s both;
+}
+
+/* =====================================
+   텍스트 계단식 모션
+   좌 → 위 → 우 → 위 → 중앙
+===================================== */
+
+@keyframes stepUpLeft {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translate(0, 40px) rotate(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(-9px, 40px) rotate(-7deg);
+    }
+
+    40% {
+        transform: translate(-9px, 28px) rotate(-7deg);
+    }
+
+    60% {
+        transform: translate(8px, 28px) rotate(7deg);
+    }
+
+    80% {
+        transform: translate(8px, 13px) rotate(7deg);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+@keyframes stepUpRight {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translate(0, 40px) rotate(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(9px, 40px) rotate(7deg);
+    }
+
+    40% {
+        transform: translate(9px, 28px) rotate(7deg);
+    }
+
+    60% {
+        transform: translate(-8px, 28px) rotate(-7deg);
+    }
+
+    80% {
+        transform: translate(-8px, 13px) rotate(-7deg);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+/* MARRIED와 함께 계단식으로 등장 */
+@keyframes heartAppearTogether {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translate(0, 40px) rotate(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(-7px, 40px) rotate(-7deg);
+    }
+
+    40% {
+        transform: translate(-7px, 28px) rotate(-7deg);
+    }
+
+    60% {
+        transform: translate(7px, 28px) rotate(7deg);
+    }
+
+    80% {
+        transform: translate(7px, 13px) rotate(7deg);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+/* 제자리에서 갸우뚱 */
+@keyframes heartWiggle {
+    0%, 100% {
+        rotate: -10deg;
+    }
+
+    50% {
+        rotate: 10deg;
+    }
+}
+
+/* =====================================
+   인물 계단식 등장
+===================================== */
+
+@keyframes coupleStepUp {
+    0% {
+        opacity: 0;
+        visibility: visible;
+        transform: translate(-50%, 50px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(calc(-50% - 8px), 50px) rotate(-2deg);
+    }
+
+    40% {
+        transform: translate(calc(-50% - 8px), 35px) rotate(-2deg);
+    }
+
+    60% {
+        transform: translate(calc(-50% + 7px), 35px) rotate(2deg);
+    }
+
+    80% {
+        transform: translate(calc(-50% + 7px), 15px) rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0) rotate(0);
+    }
+}
+
+/* =====================================
+   모션 최소화
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .married-motion-stage.is-visible .motion-item {
+        animation: none !important;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        rotate: 0deg;
+    }
+}
+
+.calendar-card{
+	background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(228, 221, 209, 0.4);
+    padding: 35px 31px;
+}
+/* 달력 전체 영역 */
+.calendar-scene {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 362 / 557;
+    overflow: hidden;
+	margin: 40px 0;
+}
+
+/* 달력 배경 */
+.calendar-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: fill;
+}
+.save-date-text {
+    position: absolute;
+    z-index: 3;
+
+    left: 50%;
+    top: 62.5%;
+
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    text-align: center;
+
+    font-family: 'Amatic SC', cursive;
+    font-size: clamp(13px, 6vw, 25px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+
+    color: #684653;
+    white-space: nowrap;
+}
+/* 스티커 공통 */
+.calendar-sticker {
+    position: absolute;
+    height: auto;
+    z-index: 2;
+    transform-origin: center center;
+    animation: sticker-rock 1.2s steps(2, end) infinite;
+    will-change: transform;
+}
+
+/* 상단 하트 */
+.sticker-top-heart {
+    left: 39%;
+    top: 44%;
+    animation-delay: 0s;
+}
+
+/* 상단 커플 */
+.sticker-top-couple {
+    left: 56%;
+    top: 41%;
+    animation-delay: 0.25s;
+}
+
+/* 왼쪽 하트 */
+.sticker-left-heart {
+    left: 20%;
+    top: 62%;
+    animation-delay: 0.45s;
+}
+
+/* 하단 커플 */
+.sticker-bottom-couple {
+    left: 39%;
+    top: 65%;
+    animation-delay: 0.15s;
+}
+
+/* 오른쪽 하트 */
+.sticker-right-heart {
+    left: 70%;
+    top: 64%;
+    animation-delay: 0.35s;
+}
+
+/* 좌우로 까딱까딱 */
+@keyframes sticker-rock {
+    0% {
+        transform: rotate(-7deg);
+    }
+    100% {
+        transform: rotate(7deg);
+    }
+}
+
+/* 움직임 최소화 설정 */
+@media (prefers-reduced-motion: reduce) {
+    .calendar-sticker {
+        animation: none;
+    }
+}
+
+
+.wedding-dday-notice {
+  font-size: 12px;
+  color: #888888;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+.wedding-dday-notice strong {
+  color: #A95C5C;
+  font-weight: 600;
+}
+
+.wedding-time-notice {
+  font-size: 17px;
+  color: #444444;
+  letter-spacing: 0.5px;
+  border-top: 1px solid #F3EDE4;
+  padding-top: 25px;
+}
+
+/* 오시는 길 카드 */
+.location-card {
+  width: calc(100% - 64px);
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(228, 221, 209, 0.4);
+  padding: 35px 12px;
+  text-align: center;
+}
+
+.hall-title {
+  font-size: 19px;
+  font-weight: 400;
+  color: #222222;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.hall-address {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #666666;
+  margin-bottom: 25px;
+  text-decoration: none !important;
+}
+
+.hall-address .old-address { font-size: 12px; color: #999999; }
+.hall-address .copy-icon { font-size: 11px; cursor: pointer; margin-left: 4px; vertical-align: middle; opacity: 0.6; }
+.btn-copy-address {
+    display: inline-flex;          /* 정렬을 위해 inline-flex 사용 */
+    align-items: center;           /* 텍스트와 세로축 정렬 */
+    justify-content: center;
+    padding: 2px 6px;              /* 좌우 패딩을 줄여서 크기 축소 */
+    margin-left: 6px;
+    font-size: 10px;               /* 폰트 사이즈 살짝 축소 */
+    color: #777777;
+    border: 1px solid #E5E2DE;     /* 테두리 색상을 조금 더 연하게 */
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #FDFBF9;     /* 아주 미미한 미색 배경 추가 */
+    transition: all 0.2s ease;
+    vertical-align: middle;        /* 텍스트 줄과 높이 맞춤 */
+    line-height: 1;                /* 행간 조절 */
+}
+
+.btn-copy-address:active {
+    background-color: #F1EFEA;
+    color: #333333;
+}
+
+.map-buttons { display: flex; gap: 10px; margin:0 auto 25px; max-width:75%;}
+
+.btn-map {
+  flex: 1;
+  height: 42px;
+  line-height: 40px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.btn-naver { border: 1px solid #03C75A; color: #03C75A; background-color: #FFFFFF; }
+.btn-kakao { border: 1px solid #E2B200; color: #A38100; background-color: #FFFFFF; }
+.parking-info { font-size: 11px; font-weight: 300; line-height: 1.8; color: #888888; text-align: center; letter-spacing:-.03rem}
+
+
+/* ========================================================
+   [GALLERY SYSTEM] 
+   ======================================================== */
+.gallery-container {
+  width: 100%;
+  padding: 80px 0 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF; 
+}
+
+.gallery-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: #444444;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.gallery-asymmetric-flex {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-bottom: 8px; 
+}
+
+.img-box {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+}
+
+.four-cut-auto .img-box img {
+  width: 100%;
+  height: auto; 
+  display: block;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         
+  object-position: center;   
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.img-box:active img { transform: scale(0.98); }
+
+/* 폭 제어 유틸리티 */
+.width-100 { width: 100%; }
+.width-70  { width: calc(70% - 2px); }
+.width-70  { width: calc(60% - 2px);height:180px;}
+.width-50  { width: 50%; }
+.width-33  { width: calc(33.33% - 4px); }
+.width-30  { width: calc(30% - 2px); }
+.width-30  { width: calc(40% - 2px); }
+
+/* 원래 높이 구조 완벽 복구 */
+.height-tall { height: 520px; }
+.height-medium { height: 250px; }
+.height-half-box { height: 280px; }   
+.height-third-box { height: 160px; }  
+.height-wide-short { height: 210px; }  
+.height-wide-cinema { height: 240px; } 
+.height-wide-main { height: 290px; }   
+
+/* 비정형 높이 시스템 */
+.height-xs-wide { height: 185px; }
+.height-xs-wide-lg { height: 180px; }
+.height-xs-wide-lg { height: 220px; }
+
+/* 배치 유틸리티 */
+.margin-v-40 { margin-top: 40px; margin-bottom: 40px; }
+.margin-v-60 { margin-top: 60px; margin-bottom: 60px; }
+.margin-bottom-8 { margin-bottom: 8px; }
+.margin-bottom-40 { margin-bottom: 40px; }
+.margin-bottom-60 { margin-bottom: 60px; }
+.padding-left-40 { padding-left: 40px; }
+.padding-right-32 { padding-right: 32px; }
+.padding-right-40 { padding-right: 40px; }
+.gap-4 { gap: 4px; }
+.gap-6 { gap: 6px; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+
+.flush-left { margin-left: 0; } 
+.flush-right { margin-right: 0; } 
+.flush-both { margin-left: 0; margin-right: 0; width: 100%; }
+.push-right { margin-left: auto; }
+
+/* 4~5번 유연한 정렬 구조 */
+.full-width-flow { justify-content: flex-start; width: 100%; }
+.v-shift-up { transform: translateY(-8px); }
+.v-shift-down { transform: translateY(8px); }
+
+/* 네컷 너비 60% 제한 및 비율 자동화 */
+.four-cut-auto {
+  width: 60% !important;
+  margin-left: auto !important;
+  height: auto !important; 
+}
+
+/* 17번 사진 세로형 15% 여백 밸런싱 */
+.four-cut-portrait-box {
+  width: 70% !important;      
+  margin-left: 15% !important; 
+  height: 380px !important;    
+}
+
+.group-top { padding: 0; gap: 5px; }
+
+/* 하단 슬라이더 */
+.gallery-slider-wrapper {
+  width: 100%;
+  margin-top: 60px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 16px 40px 16px;
+  -webkit-overflow-scrolling: touch;
+}
+.gallery-slider-wrapper::-webkit-scrollbar { display: none; }
+
+.gallery-slider {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.slide-item.polaroid-mood {
+  width: 160px;
+  background: #fbfaf7; 
+  padding: 10px 10px 30px 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.slide-item.polaroid-mood:nth-child(even) { transform: rotate(2deg); }
+.slide-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* 모달 */
+.modal-overlay {
+  display: none; 
+  position: fixed;
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* 전체 스크롤 허용 */
+  background-color: rgba(17, 17, 17, 0.98); 
+  backdrop-filter: blur(10px); 
+}
+
+/* 줌 기능을 위한 컨테이너 추가 */
+.modal-zoom-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto; /* 확대 시 스크롤 가능 */
+  -webkit-overflow-scrolling: touch;
+  padding: 60px 0;
+  box-sizing: border-box;
+  touch-action: manipulation; /* 핀치 줌은 허용하고, 더블 탭 확대는 막는 설정 */
+}
+
+.modal-content {
+  display: block;
+  max-width: 90%;
+  width: auto;
+  height: auto;
+  margin: auto;
+  border-radius: 2px;
+  animation: zoomInModal 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  -ms-touch-action: manipulation; /* 더블 탭 확대 방지 속성 */
+  touch-action: manipulation;
+}
+}
+
+@keyframes zoomInModal {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: fixed; /* 스크롤 되어도 고정 */
+  top: 20px;
+  right: 25px;
+  color: #FFFFFF;
+  font-size: 38px;
+  font-weight: 100;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+
+/* ========================================================
+   [신규 레이아웃] 20번 이후 처음으로 루프하는 감성 콜라주 믹스인
+   ======================================================== */
+.gallery-overlap-collage {
+  position: relative;
+  width: 100%;
+  height: 520px; 
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+/* [01.JPEG] 베이스 메인 사진 */
+.gallery-overlap-collage .collage-main-right {
+  position: absolute;
+  top: 50px;
+  right: 16px;
+  width: 76%;
+  height: 410px;
+  z-index: 2; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* [02.JPEG] 좌측 하단 사진 - 테두리 및 그림자 없음 */
+.gallery-overlap-collage .collage-sub-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  width: 38%;
+  height: 190px;
+  z-index: 4; 
+  border: none; 
+  box-shadow: none; 
+}
+
+/* 💡 [03.JPEG] 우측 상단 사진 - 메인 사진 위에서 우측 여백을 유지하며 아담하게 축소 */
+.gallery-overlap-collage .collage-sub-top {
+  position: absolute;
+  top: 0;
+  right: 40px;        /* 좋아하셨던 우측 여백 간격 그대로 고정 */
+  width: 24%;         /* 기존 30% -> 24%로 축소 */
+  height: 110px;      /* 기존 140px -> 110px로 축소 */
+  z-index: 3;         
+  opacity: 1;         
+}
+
+/* ========================================================
+   [GALLERY SYSTEM] 요청 사항 반영 덮어쓰기 코드
+   ======================================================== */
+
+/* 2. 01, 02, 03번 사진 영역 전체 좌측 5% 여백 추가 */
+.gallery-trio-wrapper {
+  width: 100% !important;
+  padding-left: 5% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 3. 06, 07, 08, 09번 네컷 사진 영역 전체 우측 5% 여백 추가 */
+.gallery-fourcut-wrapper {
+  width: 100% !important;
+  padding-right: 5% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important; /* 네컷 우측 정렬 유지 */
+}
+
+/* 네컷 감싸는 래퍼 안의 내부 행 구조 마진 및 정렬 보정 */
+.gallery-fourcut-wrapper .four-cut-auto {
+  width: 80% !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  height: auto !important; 
+}
+
+/* 01, 02, 03번 사진 박스 너비를 50% -> 60%로 확장 */
+.gallery-trio-wrapper .flex-row .img-box.width-50 {
+  width: 70% !important;
+}
+
+/* ========================================================
+   [ACCOUNT & CONTACT AREA] 마음 전하실 곳 스타일
+   ======================================================== */
+#account-section {
+  width: 100%;
+  padding: 80px 24px;
+  background-color: #fbfaf7;
+  text-align: center;
+}
+
+.account-title {
+  font-family: 'Gowun Batang', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #222222;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.account-subtitle {
+  font-size: 12.5px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #777777;
+  margin-bottom: 40px;
+}
+
+.accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.accordion-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(228, 221, 209, 0.35);
+  overflow: hidden;
+  text-align: left;
+}
+
+/* 드랍다운 헤더 버튼 */
+.accordion-header {
+  width: 100%;
+  padding: 18px 20px;
+  background: #FFFFFF;
+  border: none;
+  font-family: 'Gowun Batang', serif;
+  font-size: 14px;
+  color: #444444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.accordion-header:active {
+  background-color: #FDFBF9;
+}
+
+.accordion-header .arrow-icon {
+  font-size: 12px;
+  color: #999999;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 열렸을 때 화살표 회전 효과 */
+.accordion-card.is-active .accordion-header .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* 드랍다운 본문 수축/팽창 애니메이션 */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: #FAFAFA;
+  border-top: 0 solid #F5F2EC;
+}
+
+.accordion-card.is-active .accordion-content {
+  border-top-width: 1px;
+}
+
+.info-list {
+  padding: 8px 20px 20px 20px;
+}
+
+.info-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #EEEEEE;
+}
+.info-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* 이름 & 연락처 라인 */
+.person-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.person-row .role {
+  font-size: 12px;
+  color: #888888;
+  min-width: 75px;
+}
+
+.person-row .name {
+  font-size: 14.5px;
+  color: #222222;
+  font-weight: 400;
+}
+
+/* 전화 걸기 버튼 스타일 */
+.btn-call {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: #6B7A6B;
+  text-decoration: none;
+  border: 1px solid #D6DDD6;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.btn-call:active {
+  background: #6B7A6B;
+  color: #FFFFFF;
+}
+
+/* 계좌번호 박스 (클릭 가능한 영역) */
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F1EFEA;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.account-row:active {
+  background: #E5E2DB;
+}
+
+.bank-info {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #555555;
+  letter-spacing: 0.3px;
+}
+
+.btn-copy {
+  font-size: 11px;
+  color: #888888;
+  border-left: 1px solid #D1CFC9;
+  padding-left: 10px;
+}
+
+/* 토스트 알림 팝업 스타일 */
+.toast-popup {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: rgba(40, 40, 40, 0.88);
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 12.5px;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+.toast-popup.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* ========================================================
+   [FOOTER] 미니멀 디자이너 시그니처 푸터 (시크 다크 버전)
+   ======================================================== */
+.wedding-footer {
+  width: 100%;
+  padding: 60px 24px 80px 24px;
+  background-color: #1A1A1A !important; /* 아예 시크하게 떨어지는 딥 블랙 */
+  text-align: center;
+  border-top: 1px solid #2A2A2A !important;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 다크 배경에 맞춰 글자색을 화이트/실버 톤으로 세련되게 변경 */
+.footer-date {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: #888888 !important; /* 은은한 그레이 */
+  letter-spacing: 3px;
+}
+
+.footer-title {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #666666 !important; /* 묵직하게 힘을 뺀 차콜 */
+  letter-spacing: 2px;
+}
+
+.footer-copyright {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: #555555 !important;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* geee_ny 디자이너 시그니처만 어둠 속에서 은은하게 빛나도록 네온 실버 톤 적용 */
+.footer-copyright .designer-tag {
+  font-weight: 500;
+  color: #CCCCCC !important; 
+  letter-spacing: 0.8px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* 미세한 광택감 */
+}
+
+/* 모달 좌우 버튼 스타일 */
+.modal-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent; /* 배경 제거 */
+    border: none;
+    color: rgba(255, 255, 255, 0.7); /* 살짝 투명한 흰색으로 고급스럽게 */
+    font-size: 24px; /* 화살표 크기 조절 (기존 30px에서 축소) */
+    padding: 20px; /* 터치 영역은 넓게 유지 */
+    cursor: pointer;
+    z-index: 1010;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent; /* 모바일 터치 하이라이트 제거 */
+}
+
+/* 터치 영역이 넓으므로 hover 효과는 은은하게 */
+.modal-nav:active {
+    color: #ffffff; /* 터치 시 더 밝게 */
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+
+
+.wedding-cradit {
+    position: relative;
+    width: 100%;
+    height: 475px;
+    min-height: 475px;
+    overflow: hidden;
+    isolation: isolate;
+    box-sizing: border-box;
+    color: #fff;
+    background-color: #211a17;
+    background-image: url("image/wedding-footer-img.png");
+    background-size: cover;
+    background-position: 78% center;
+    background-repeat: no-repeat;
+}
+
+/* 배경 음영 */
+.wedding-cradit::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.22),
+        rgba(0, 0, 0, 0.12) 45%,
+        rgba(0, 0, 0, 0.42)
+    );
+}
+
+.wedding-cradit .credit-viewport {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.wedding-cradit .credit-track {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 73%;
+    padding: 0 0 0 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.wedding-cradit .credit-line {
+    display: grid;
+    grid-template-columns: 43% 57%;
+    gap: 0;
+    align-items: start;
+    margin-bottom: 24px;
+    font-family: 'Gowun Batang', serif;
+    font-size: 12px;
+    line-height: 1.9;
+    letter-spacing: -0.2px;
+}
+
+.wedding-cradit .credit-label {
+    color: #fff;
+    font-weight: 700;
+}
+
+.wedding-cradit .credit-value {
+    color: rgba(255, 255, 255, 0.92);
+    word-break: keep-all;
+}
+
+/* 마지막 감사 인사 */
+.wedding-cradit .footer-ending-message {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: 16%;
+    width:100%;
+    margin: 0;
+    color: #fff;
+    font-family: 'Gowun Batang', serif;
+    font-size: 12px;
+    line-height: 2.2;
+    letter-spacing: -0.3px;
+    text-align: center;
+    word-break: keep-all;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(22px);
+    filter: blur(3px);
+}
+
+@media (min-width: 768px) {
+    .wedding-cradit {
+        height: 700px;
+        min-height: 700px;
+        background-position: center 55%;
+    }
+
+    .wedding-cradit .credit-track {
+        width: 520px;
+        padding-left: 40px;
+    }
+
+    .wedding-cradit .credit-line {
+        font-size: 13px;
+    }
+
+    .wedding-cradit .footer-ending-message {
+        left: 40px;
+        bottom: 18%;
+        width: 440px;
+        font-size: 13px;
+    }
+}
+
+
+
+
+
+
