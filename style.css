@@ -34,7 +34,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('image/intro/cover.jpg') center center no-repeat;
+  background: url('image/intro/cover.JPG') center center no-repeat;
   background-size: cover;
 }
 
