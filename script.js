@@ -276,3 +276,204 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(motionSection);
 
 });
+
+
+/* =========================================
+   Wedding Gallery
+========================================= */
+
+// 사진 확대 기능 사용 여부
+const ENABLE_LIGHTBOX = true;
+
+// 갤러리 사진 목록
+const galleryPhotos = [
+    "image/gallery/01.jpg",
+    "image/gallery/02.jpg",
+    "image/gallery/03.jpg",
+    "image/gallery/04.jpg",
+    "image/gallery/05.jpg",
+    "image/gallery/06.jpg",
+    "image/gallery/07.jpg",
+    "image/gallery/08.jpg",
+    "image/gallery/09.jpg",
+    "image/gallery/10.jpg",
+    "image/gallery/11.jpg",
+    "image/gallery/12.jpg"
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const galleryGrid = document.getElementById("galleryGrid");
+    const photoViewer = document.getElementById("photoViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerCount = document.getElementById("viewerCount");
+
+    const viewerClose = document.getElementById("viewerClose");
+    const viewerPrev = document.getElementById("viewerPrev");
+    const viewerNext = document.getElementById("viewerNext");
+
+    // 필수 요소가 없으면 실행 중단
+    if (
+        !galleryGrid ||
+        !photoViewer ||
+        !viewerImage ||
+        !viewerCount ||
+        !viewerClose ||
+        !viewerPrev ||
+        !viewerNext
+    ) return;
+
+    let currentPhoto = 0;
+    let touchStartX = 0;
+    let isAnimating = false;
+
+    // 갤러리 자동 생성
+    galleryPhotos.forEach((src, index) => {
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "gallery-item";
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `웨딩 사진 ${index + 1}`;
+        img.loading = "lazy";
+
+        button.appendChild(img);
+
+        if (ENABLE_LIGHTBOX) {
+            button.addEventListener("click", () => {
+                openViewer(index);
+            });
+        } else {
+            button.disabled = true;
+        }
+
+        galleryGrid.appendChild(button);
+    });
+
+
+    // 사진 확대
+    function openViewer(index) {
+
+        currentPhoto = index;
+        isAnimating = false;
+
+        viewerImage.classList.remove("slide-next", "slide-prev");
+
+        viewerImage.src = galleryPhotos[currentPhoto];
+
+        updateCount();
+
+        photoViewer.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+
+    // 사진 번호 업데이트
+    function updateCount() {
+        viewerCount.textContent =
+            `${currentPhoto + 1} / ${galleryPhotos.length}`;
+    }
+
+
+    // 사진 변경
+    function changePhoto(direction) {
+
+        if (isAnimating) return;
+
+        isAnimating = true;
+
+        if (direction === "next") {
+            currentPhoto = (currentPhoto + 1) % galleryPhotos.length;
+        } else {
+            currentPhoto =
+                (currentPhoto - 1 + galleryPhotos.length) % galleryPhotos.length;
+        }
+
+        viewerImage.classList.remove("slide-next", "slide-prev");
+
+        // 애니메이션 초기화 후 재실행
+        void viewerImage.offsetWidth;
+
+        viewerImage.src = galleryPhotos[currentPhoto];
+
+        viewerImage.classList.add(
+            direction === "next" ? "slide-next" : "slide-prev"
+        );
+
+        updateCount();
+
+        // 애니메이션 종료 후 다음 입력 허용
+        setTimeout(() => {
+            isAnimating = false;
+        }, 380);
+    }
+
+
+    // 이전 / 다음 사진
+    function prevPhoto() {
+        changePhoto("prev");
+    }
+
+    function nextPhoto() {
+        changePhoto("next");
+    }
+
+
+    // 닫기
+    function closeViewer() {
+        photoViewer.classList.remove("active");
+        document.body.style.overflow = "";
+        isAnimating = false;
+    }
+
+
+    // 버튼 이벤트
+    viewerClose.addEventListener("click", closeViewer);
+    viewerPrev.addEventListener("click", prevPhoto);
+    viewerNext.addEventListener("click", nextPhoto);
+
+
+    // 검은 배경 클릭 시 닫기
+    photoViewer.addEventListener("click", (e) => {
+        if (e.target === photoViewer) {
+            closeViewer();
+        }
+    });
+
+
+    // 키보드 조작
+    document.addEventListener("keydown", (e) => {
+
+        if (!photoViewer.classList.contains("active")) return;
+
+        if (e.key === "Escape") closeViewer();
+        if (e.key === "ArrowLeft") prevPhoto();
+        if (e.key === "ArrowRight") nextPhoto();
+    });
+
+
+    // 모바일 좌우 스와이프
+    photoViewer.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+
+    photoViewer.addEventListener("touchend", (e) => {
+
+        if (!photoViewer.classList.contains("active")) return;
+
+        const touchEndX = e.changedTouches[0].screenX;
+        const distance = touchEndX - touchStartX;
+
+        if (Math.abs(distance) < 50) return;
+
+        if (distance < 0) {
+            nextPhoto();
+        } else {
+            prevPhoto();
+        }
+    }, { passive: true });
+
+});
