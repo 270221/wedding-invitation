@@ -1276,7 +1276,7 @@ body {
 #el6qNwEcz4O1{
 	position:relative;
 	top:-59px;
-	filter:brightness(0);
+	filter: brightness(0) saturate(100%) invert(82%) sepia(14%) saturate(500%) hue-rotate(326deg) brightness(96%) contrast(90%);
 }
 
 
