@@ -1279,7 +1279,15 @@ body {
 	filter: brightness(0) saturate(100%) invert(82%) sepia(14%) saturate(500%) hue-rotate(326deg) brightness(96%) contrast(90%);
 }
 
+/* 배경 이미지 로딩 전 숨김 */
+.wedding-cradit {
+    background-image: none;
+}
 
+/* 이미지 로딩 완료 후 배경 표시 */
+.wedding-cradit.bg-loaded {
+    background-image: url("image/wedding-footer-img.png");
+}
 
 
 
