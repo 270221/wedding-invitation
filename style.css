@@ -1279,16 +1279,6 @@ body {
 	filter: brightness(0) saturate(100%) invert(82%) sepia(14%) saturate(500%) hue-rotate(326deg) brightness(96%) contrast(90%);
 }
 
-/* 이미지 로딩 전 숨김 */
-.fade-image {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* 이미지 로딩 완료 */
-.fade-image.loaded {
-    opacity: 1;
-}
 
 
 
