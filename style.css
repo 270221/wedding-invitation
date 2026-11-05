@@ -144,7 +144,10 @@ body {
     align-items: center;
     margin-bottom: 32px;
 }
-
+.invitation-heart img{
+	width:68px;
+	
+}
 /* 초대 문구 */
 .invitation-content h2 {
     margin: 0 0 40px;
