@@ -330,6 +330,7 @@ body {
 /* COUPLE */
 .married-motion-stage.is-visible .motion-couple {
     animation: coupleStepUp 1s steps(1, end) 1.5s both;
+	width: 290px;
 }
 
 /* =====================================
