@@ -479,3 +479,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+const creditBg = new Image();
+
+creditBg.onload = function () {
+    document.querySelector('.wedding-cradit')
+        ?.classList.add('bg-loaded');
+};
+
+creditBg.src = "image/wedding-footer-img.png";
